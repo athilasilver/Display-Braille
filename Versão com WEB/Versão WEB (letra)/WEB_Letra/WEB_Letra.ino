@@ -6,6 +6,7 @@
 Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(&Wire, 0x40);
 Adafruit_PWMServoDriver pwm2 = Adafruit_PWMServoDriver(&Wire, 0x41);
 
+#define tempo_letra 4000 //Tempo que a letra fica configurada (em ms)
 #define SERVOMIN  205 // Pulso mínimo (~1ms)
 #define SERVOMAX  409 // Pulso máximo (~2ms)
 
@@ -115,8 +116,7 @@ void analisarCaractere(String inputMessage) {
         ajust2 = 6;
       }
     }
-
-    delay(4000); // Mantém posição por 4s
+    delay(tempo_letra); // Mantém posição por 4s
     for (int i = 0; i < 15; i++) {
       pwm1.setPWM(i, 0, SERVOMIN); pwm2.setPWM(i, 0, SERVOMIN);
       delay(2);
